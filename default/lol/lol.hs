@@ -4,10 +4,10 @@ p i j=floor$sin(p*i+j*pi*2/3)*127+128;v x=(x-35)`div`40;c True p=";2;"<>j";"(s p
 );c _[r,g,b]=";5;"<>(show$16+v r*36+v g*6+v b);o=cycle[(p,g,e)|p<-[1/9,1/3],g<-s
 [38,48],e<-s[0,1,4,5]];l(p,g,e)t=[m[g<>(c t$map(r p i)[0..2]),e]|i<-[0..]];f 1_[
 ]=[];f 1_(c:s)|c/='\27'=[[c]]++f 1[]s|y=f 2[c]s;f 2t(c:s)|isLetter$c=[t++[c]]++f
-1[]s|y=f 2(t++[c])s;p h s=hIsClosed h>>=flip unless(do{c<-f 1[]<$>hGetContents h
-;putStr$j""(zipWith($)s c);p h(drop(n c)s);});main=do{(_:a)<-getArgs;t<-(/="")
+1[]s|y=f 2(t++[c])s;p h s=(do{c<-f 1[].unpack<$>z h;hPutStr stdout$pack$j""(
+zipWith($)s c);unless(c==[])$p h(drop(n c)s);});main=do{(_:a)<-getArgs;t<-(/="")
 <$>getEnvDefault"COLORTERM""";(_,Just h,_,_)<-createProcess(proc"./play"(
-dropWhile(=="lol")a)){std_out=CreatePipe};p h$l(o!!(max(n a-1)0))t}}
+dropWhile(=="lol")a)){std_out=CreatePipe};p h$l(o!!(max(n a-1)0))t};z=hGetChunk}
 -- ^10 ------------------------------------------------------------------ 80> --
 {-default-10-80/lol (hellwolf), ghc 9.4.2
 
